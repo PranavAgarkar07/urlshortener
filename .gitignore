@@ -1,0 +1,32 @@
+# Build output - never commit
+target/
+*.class
+*.war
+*.jar
+!src/**/*.jar
+
+# Eclipse (keep .project/.classpath/.settings tracked for Day 1, ignore local extras)
+*.orig
+*.rej
+*.log
+daily-commit.log
+
+# Project report - excluded per your "no" (code only)
+*.docx
+ShortURL-Project-Report.docx
+
+# Daily-commit router state - local only, changes every day
+.daily-commit-state
+.daily-commit-last-date
+
+# Local tooling (kept out of the published repo)
+scripts/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
