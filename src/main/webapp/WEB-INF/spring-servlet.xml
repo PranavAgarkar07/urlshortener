@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!-- Unit-IV: Spring setup via XML (as per syllabus) -->
+  <context:component-scan base-package="com.wit.shorturl"/>
+
+  <!-- JSP view: /WEB-INF/views/xxx.jsp (Unit-III) -->
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/views/"/>
+    <property name="suffix" value=".jsp"/>
+  </bean>
+
+  <!-- DataSource: JDBC (Unit-I). XAMPP default root/empty. -->
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+    <property name="url" value="jdbc:mysql://localhost:3306/shortdb?useSSL=false&amp;serverTimezone=UTC"/>
+    <property name="username" value="root"/>
+    <property name="password" value=""/>
+  </bean>
+
+  <!-- Unit-IV Spring DAO: JdbcTemplate over the DataSource. No JPA, so GlassFish 3 is happy. -->
+  <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+</beans>
